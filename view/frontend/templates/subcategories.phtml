@@ -1,0 +1,54 @@
+<?php
+
+use Magento\Cms\Block\Block as CmsBlock;
+
+/** @var ListProduct $block */
+/** @var Escaper $escaper */
+/** @var Epolicesupply\Subcategories\ViewModel\Subcategories $viewmodel */
+
+$viewmodel = $block->getViewModel();
+
+
+$categoryID = $viewmodel->getCategoryID();
+$categoryLevelCSS = $viewmodel->getCategoryLevelCSS();
+$cmsBlockHtml = $this->getLayout()->createBlock(CmsBlock::class)->setBlockId('megamenu_cat' . $categoryID)->toHtml();
+
+?>
+
+<?php if ($cmsBlockHtml): ?>
+    <div class="category-bg-image">
+        <?= /** @noEscape */
+        $cmsBlockHtml ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($viewmodel->getCategories() && count($viewmodel->getCategories()) > 0): ?>
+    <div class="relative my-28  max-w-[1000px]  <?= $categoryLevelCSS ?>">
+
+        <ol class="grid justify-items-center lg:justify-items-start gap-y-16 grid-col-1 sm:grid-cols-2 lg:grid-cols-3   ">
+            <?php foreach ($viewmodel->getCategories() as $subcategory): ?>
+                <li class="w-[253px] h-[253px] bg-white shadow-2xl shadow-neutral-800/50 flex items-center justify-center">
+                    <div class="category-item text-center">
+                        <?php if ($_imgUrl = $viewmodel->getImage($subcategory)): ?>
+                            <a href="<?= $subcategory->getUrl() ?>" class="product photo product-item-photo">
+                                <span class="product-image-container block overflow-hidden">
+                                    <?= '<img class="object-contain"  alt="' . $subcategory->getName() . '"src="' . $_imgUrl . '" />'; ?>
+                                </span>
+                                <?php if($categoryLevelCSS == 'subcategory-category'): ?>
+                                <h2 class="uppercase font-extrabold text-lg text-blue-dark"><?= $subcategory->getName() ?></h2>
+                                <?php endif; ?>
+                                <span class="btn btn-outlined btn-small mt-6 mb-4"
+                                      href=""> <?= $escaper->escapeHtml(__('See all')) ?></span>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+    </div>
+<?php endif; ?>
+
+
+
+
+

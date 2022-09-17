@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="category.view.container" remove="true" />
+        <referenceBlock name="page.main.title">
+            <block name="subcategories" template="Magento_Catalog::subcategories.phtml" after="-">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Epolicesupply\Subcategories\ViewModel\Subcategories</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

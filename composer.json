@@ -1,0 +1,21 @@
+{
+    "name": "pixel/module-subcategories",
+    "description": "Show subcategories on Category landing page",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Srdan Canjko"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+          "registration.php"
+        ],
+        "psr-4": {
+            "Epolicesupply\\Subcategories\\": ""
+        }
+    }
+}
