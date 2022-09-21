@@ -5,7 +5,7 @@
         <referenceBlock name="page.main.title">
             <block name="subcategories" template="Magento_Catalog::subcategories.phtml" after="-">
                 <arguments>
-                    <argument name="view_model" xsi:type="object">Epolicesupply\Subcategories\ViewModel\Subcategories</argument>
+                    <argument name="view_model" xsi:type="object">Pixel\Subcategories\ViewModel\Subcategories</argument>
                 </arguments>
             </block>
         </referenceBlock>
